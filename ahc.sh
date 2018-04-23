@@ -1,7 +1,7 @@
 #!/bin/bash
 #########################################################
 #
-# Script  add Virtual host
+# Script  add Host Console
 # Author:GRS gaevoyrs@gmail.com
 #
 #########################################################
@@ -9,6 +9,7 @@
 ##############
 # var
 ##############
+
 ACTION=$1
 DOMAIN=$2
 VERSION=$3
@@ -21,6 +22,18 @@ PATH_HOSTS="/etc/hosts"
 ##########
 # method
 ##########
+
+#install
+install() {
+    alias ahc='bash `pwd`'/ahc.sh' $@'
+    echo 'Добавлено';
+}
+
+#uninstall
+uninstall() {
+    unalias ahc
+    echo 'Удалено';
+}
 
 # add virtual host item
 addVH() {
@@ -53,15 +66,52 @@ restart() {
 #############
 # script
 #############
-if [ ${ACTION} == 'a' ]
+if [[ ${ACTION} == 'a' ]]
 then
     echo "Добавление $DOMAIN";
     addVH ${DOMAIN}
-elif [ ${ACTION} == 'd' ]
+elif [[ ${ACTION} == 'd' ]]
 then
     echo "Удаление $DOMAIN";
     dellVH ${DOMAIN}
-elif [ ${ACTION} == 'h' ]
+elif [[ ${ACTION} == 'i' ]]
 then
-    echo "HELP $DOMAIN $VERSION";
+    echo "Установка";
+    init
+elif [[ ${ACTION} == 'u' ]]
+then
+    echo "Удалено";
+    uninstall
+elif [[ ${ACTION} == 'd' ]]
+then
+    echo "DEBUG";
+    echo "ACTION = $ACTION";
+    echo "DOMAIN = $DOMAIN";
+    echo "VERSION = $VERSION";
+    echo "PATH_WWW = $PATH_WWW";
+    echo "PATH_TEMPLATE = $PATH_TEMPLATE";
+    echo "PATH_TEMPLATE_POSTFIX = $PATH_TEMPLATE_POSTFIX";
+    echo "PATH_APACHE = $PATH_APACHE";
+    echo "PATH_HOSTS = $PATH_HOSTS";
+    echo "ACTION:"
+    echo "ACTION"
+elif [[ ${ACTION} == 'h' ]]
+then
+    echo "HELP";
+    echo "ACTION:"
+    echo "  a - add"
+    echo "      NEED: DOMAIN, VERSION"
+    echo "  d - dell"
+    echo "      NEED: DOMAIN"
+    echo "  i - install"
+    echo "  u - uninstall"
+    echo "  d - debug"
+    echo "  h - help"
+    echo "DOMAIN: your domain"
+    echo "VERSION:"
+    echo "  5.6"
+    echo "  7.1"
+    echo "  7.2"
+else
+    echo 'use h'
 fi
