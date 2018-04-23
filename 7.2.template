@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+  ServerAdmin gaevoy@localhost
+  ServerName ITEM_APACHE
+  DocumentRoot /var/php/www/ITEM_APACHE
+  AddHandler fcgid-script .php
+  FcgidWrapper /usr/bin/php-cgi7.2  .php
+  <Directory /var/php/www/ITEM_APACHE>
+    Options +ExecCGI
+    AllowOverride All
+    Require all granted
+  </Directory>
+  ErrorLog /var/log/apache2/error.log
+  LogLevel debug
+  CustomLog /var/log/apache2/access.log combined
+  ServerSignature On
+</VirtualHost>
