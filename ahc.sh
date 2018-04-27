@@ -13,7 +13,7 @@
 ACTION=$1
 DOMAIN=$2
 VERSION=$3
-PATH_WWW="var/php/www"
+PATH_WWW="/var/php/www"
 PATH_TEMPLATE="`pwd`"
 PATH_TEMPLATE_POSTFIX=".template"
 PATH_APACHE="/etc/apache2/sites-available"
@@ -40,8 +40,8 @@ addVH() {
     ITEM=$1
     ITEM_APACHE="$PATH_APACHE/$ITEM.conf"
     chmod 777 "$PATH_WWW/$ITEM"
-    TEMPLATE="$PATH_TEMPLATE/$VERSION/$PATH_TEMPLATE_POSTFIX"
-    cp ${PATH_TEMPLATE} ${ITEM_APACHE}
+    TEMPLATE="$PATH_TEMPLATE/$VERSION$PATH_TEMPLATE_POSTFIX"
+    cp ${TEMPLATE} ${ITEM_APACHE}
     sed -i -e "s/ITEM_APACHE/$ITEM/g" ${ITEM_APACHE}
     chmod 777 ${ITEM_APACHE}
     a2ensite "$ITEM.conf"
