@@ -82,6 +82,10 @@ elif [[ ${ACTION} == 'u' ]]
 then
     echo "Удалено";
     uninstall
+elif [[ ${ACTION} == 'r' ]]
+then
+    echo "Перезапуск сервера";
+    restart
 elif [[ ${ACTION} == 'd' ]]
 then
     echo "DEBUG";
@@ -106,6 +110,7 @@ then
     echo "  i - install"
     echo "  u - uninstall"
     echo "  d - debug"
+    echo "  r - restart"
     echo "  h - help"
     echo "DOMAIN: your domain"
     echo "VERSION:"
