@@ -1,10 +1,10 @@
 <VirtualHost *:80>
   ServerAdmin gaevoy@localhost
   ServerName ITEM_APACHE
-  DocumentRoot /var/php/www/ITEM_APACHE/public
+  DocumentRoot /var/php/www/ITEM_APACHE/back/public
   AddHandler fcgid-script .php
   FcgidWrapper /usr/bin/php-cgi7.2  .php
-  <Directory /var/php/www/ITEM_APACHE/public>
+  <Directory /var/php/www/ITEM_APACHE/back/public>
     Options +ExecCGI
     AllowOverride All
     Require all granted
