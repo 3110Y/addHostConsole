@@ -117,6 +117,8 @@ then
     echo "  5.6"
     echo "  7.1"
     echo "  7.2"
+    echo "  7.2public"
+    echo "  7.2_back_public"
 else
     echo 'use h'
 fi
